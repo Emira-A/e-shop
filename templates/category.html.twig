@@ -1,51 +1,34 @@
 {% extends "base.html.twig" %}
 
 
-{% block title %}{{alias | title}}{% endblock %}
+{% block title %}{{category.name}}{% endblock %}
 
 {% block body %}
     <div class="p-3 mx-auto text-center">
-        <h1 class="display-4">{{alias | title}}</h1>
+        <h1 class="display-4">{{ category.name }}</h1>
     </div>
 
     <div class="py-5 bg-light">
         <div class="container">
             <div class="row">
 
-                <div class="col-md-4 mt-4">
-                    <div class="card shadow-sm">
-                        <img src="https://via.placeholder.com/500x350" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
+                    {# Boucle for pour les produits #}
+                 {% for product in category.products %}
 
-                <div class="col-md-4 mt-4">
-                    <div class="card shadow-sm">
-                        <img src="https://via.placeholder.com/500x350" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="col-md-4 mt-4">
+                        <div class="card shadow-sm">
+                            <img src="{{ product.image }}" class="card-img-top" alt="{{ product.title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.title }}</h5>
+                                <a href="#" class="btn btn-primary">Lire la suite</a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-4 mt-4">
-                    <div class="card shadow-sm">
-                        <img src="https://via.placeholder.com/500x350" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+
+
             </div>
         </div>
     </div>
 {% endblock %}
-

@@ -55,11 +55,6 @@ class Product
     private $Categories;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $yes;
-
-    /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -167,18 +162,6 @@ class Product
     public function removeCategory(Category $category): self
     {
         $this->Categories->removeElement($category);
-
-        return $this;
-    }
-
-    public function getYes(): ?string
-    {
-        return $this->yes;
-    }
-
-    public function setYes(string $yes): self
-    {
-        $this->yes = $yes;
 
         return $this;
     }

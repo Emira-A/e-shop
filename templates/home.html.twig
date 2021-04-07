@@ -1,9 +1,35 @@
 {% extends "base.html.twig" %}
 
-{% block title %}>Home<{% endblock %}
+{% block title %}>Page d'Accueil<{% endblock %}
 
 {% block body %}
-    <h3>
-        Bienvenue sur mon e-shop.
-    </h3>
+<div class="p-3 mx-auto text-center">
+    <h1 class="display-4">E-shop</h1>
+</div>
+
+<div class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+
+            {% for product in products %}
+{% dump product.categories %}
+                <div class="col-md-4 mt-4">
+                    <div class="card shadow-sm">
+                        <img src="{{ product.image }}" class="card-img-top" alt="{{ product.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.title }}</h5>
+                            <a href="{{ path('default_product', {
+                                'category' : product.categories.0.alias,
+                                'alias' : product.alias,
+                                'id' : product.id
+                            }) }}" class="btn btn-primary">Lire la suite</a>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
 {% endblock %}
