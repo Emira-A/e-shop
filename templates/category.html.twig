@@ -20,13 +20,16 @@
                             <img src="{{ product.image }}" class="card-img-top" alt="{{ product.title }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ product.title }}</h5>
-                                <a href="#" class="btn btn-primary">Lire la suite</a>
+                                <a href="<a href="{{ path('default_product', {
+                                    'category' : product.categories.0.alias,
+                                    'alias' : product.alias,
+                                    'id' : product.id
+                                }) }}" class="btn btn-primary">Lire la suite</a>
                             </div>
                         </div>
                     </div>
 
                 {% endfor %}
-
 
             </div>
         </div>

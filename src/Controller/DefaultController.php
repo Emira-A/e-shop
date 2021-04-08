@@ -34,23 +34,14 @@ class DefaultController extends AbstractController
      *http://localhost:8000/computer
      * @Route("/{alias}", name="default_category", methods={"GET"})
      */
-    public function category(Category  $category){
-
-        // Recuperation des articles de la BDD
-        $category = $this->getDoctrine()
-            ->getRepository(Category::class)
-            ->findAll();
+    public function category(Category $category){
 
         return $this->render('category.html.twig',[
-            'category' => $category
+            'category' => $category,
+            'products' => $category->getProducts()
+
         ]);
 
-        $products = $this->getDoctrine()
-            ->getRepository(Product::class)
-            ->findAll();
-        return $this->render('category.html.twig', [
-            'products' => $products
-        ]);
 
     }
 
