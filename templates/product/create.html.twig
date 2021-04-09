@@ -9,7 +9,7 @@
         {{ parent() }}
         <script src="https://cdn.ckeditor.com/ckeditor5/27.0.0/classic/ckeditor.js"></script>
         <script>
-            ClassicEditor.create( document.querySelector( '#form_content') );
+            ClassicEditor.create( document.querySelector( '#form_description') );
         </script>
     {% endblock %}
 
@@ -20,7 +20,7 @@
                 <div class="col-8 mx-auto">
                     <h3 class="my-4 text-center">Enregistrer un produit</h3>
                     {# Permet d'afficher un formulaire  #}
-                    {{ form(form) }}
+                    {{ form(form, {attr: {novalidate: 'novalidate'}}) }}
                 </div>
             </div>
         </div>

@@ -13,9 +13,20 @@
 <div class="py-5 bg-light">
     <div class="container">
         <div class="row">
-            <div class="jumbotron">
-                <img src="{{ product.image }}" alt="{{ product.title }}">
-                {{ product.description | raw }}
+            <div class="col">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                 <div class="jumbotron">
+                    <img class="col-12" src="{{ asset('uploads/images/' ~ product.image)  }}" alt="{{ product.title }}">
+                    <div class="col-12">
+                        {{ product.description | raw }}
+                        <p>Prix: {{ product.prix | raw }} €TTC</p>
+                        <p>Référence:{{ product.reference | raw }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

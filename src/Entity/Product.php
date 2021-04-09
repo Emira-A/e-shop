@@ -6,6 +6,7 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -21,6 +22,8 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez mettre le nom du produit.")
+     * @Assert\Length(max=225, maxMessage="Le nom du produit est trop long.")
      */
     private $title;
 
@@ -31,6 +34,8 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez ajouter une image.")
+     * @Assert\Image(mimeTypesMessage="Attention, verifiez le format de l'image.")
      */
     private $image;
 
@@ -41,11 +46,13 @@ class Product
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Vous devez saisir un contenu.")
      */
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=80)
+     * @ORM\Column(type="float", length=80)
+     * @Assert\PositiveOrZero(message="Le prix n'est pas valide.")
      */
     private $prix;
 
