@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -25,7 +26,9 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/create", name="product_create", methods={"GET|POST"})
+     * http://localhost:8001/dashboard/product/create
+     * @IsGranted("ROLE_AUTHOR")
+     * @Route("/product/create", name="product_create", methods={"GET|POST"})
      */
     public function create(Request $request, SluggerInterface $slugger)
     {

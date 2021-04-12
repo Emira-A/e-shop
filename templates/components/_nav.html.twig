@@ -14,7 +14,19 @@
             <a class="nav-link" href="#">Contact</a>
         </div>
         <div class="navbar-nav ml-auto">
-            <a class="nav-link" href="{{ path('product_create') }}">Ajouter un produit</a>
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                {% if is_granted('ROLE_AUTHOR') %}
+                    <a class="nav-link" href="{{ path('product_create') }}">Ajouter un produit</a>
+                {% endif%}
+
+                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+            {% else %}
+                <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                <a class="nav-link" href="{{ path('user_register') }}">Inscription</a>
+            {% endif %}
+
         </div>
     </div>
 </nav>
